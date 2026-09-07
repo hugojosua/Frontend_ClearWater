@@ -43,7 +43,7 @@ const Registro = () => {
       // Usamos el rol "cliente" por defecto para el uso real del sistema
       const response = await axios.post('https://backend-clearwater.onrender.com/api/auth/registro', {
         ...formData,
-        rol: 'admin' // Cambiar a 'cliente' para producción
+        rol: 'cliente' // Cambiar a 'cliente' para producción
       });
 
       setMensaje({ tipo: 'exito', texto: '¡Usuario registrado correctamente!' });
