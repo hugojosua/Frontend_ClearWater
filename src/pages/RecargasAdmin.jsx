@@ -24,7 +24,7 @@ const RecargasAdmin = () => {
     const consultarEstado = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get(`http://localhost:5000/api/recargas/estado-cliente/${usuarioId}`, {
+        const res = await axios.get(`https://backend-clearwater.onrender.com/api/recargas/estado-cliente/${usuarioId}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setEstadoCliente(res.data);
@@ -44,7 +44,7 @@ const RecargasAdmin = () => {
   const cargarClientes = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/clientes', {
+      const response = await axios.get('https://backend-clearwater.onrender.com/api/clientes', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setClientes(response.data);
@@ -67,7 +67,7 @@ const RecargasAdmin = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.post('http://localhost:5000/api/recargas/registrar', 
+      const response = await axios.post('https://backend-clearwater.onrender.com/api/recargas/registrar', 
         { usuario_id: usuarioId, metodo_pago: metodoPago, valor: Number(valor) },
         { headers: { Authorization: `Bearer ${token}` } }
       );

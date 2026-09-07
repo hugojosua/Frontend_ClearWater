@@ -24,7 +24,7 @@ const ClienteDashboard = () => {
       const token = localStorage.getItem('token');
       const config = { headers: { Authorization: `Bearer ${token}` } };
       
-      const response = await axios.get('http://localhost:5000/api/clientes/perfil-datos', config);
+      const response = await axios.get('https://backend-clearwater.onrender.com/api/clientes/perfil-datos', config);
       
       setTotalRecargas(response.data.totalRecargas);
       setNotificaciones(response.data.notificaciones);
@@ -37,7 +37,7 @@ const ClienteDashboard = () => {
   const cargarCatalogo = async () => {
     try {
       // Cargamos el catálogo de productos real de la base de datos
-      const response = await axios.get('http://localhost:5000/api/productos');
+      const response = await axios.get('https://backend-clearwater.onrender.com/api/productos');
       setProductosCatalogo(response.data);
     } catch (error) {
       console.error('Error al cargar el catálogo', error);
@@ -53,7 +53,7 @@ const ClienteDashboard = () => {
       // Mensaje formateado claramente para que el admin lo identifique de inmediato
       const mensajeNoti = `PEDIDO_PRODUCTO: ${producto.nombre} (Precio: $${Number(producto.precio).toFixed(2)})`;
 
-      await axios.post('http://localhost:5000/api/notificaciones', {
+      await axios.post('https://backend-clearwater.onrender.com/api/notificaciones', {
         usuario_id: usuario.id,
         mensaje: mensajeNoti
       }, config);
@@ -170,7 +170,7 @@ const ClienteDashboard = () => {
                   <div className="flex items-center gap-4">
                     <div className="h-16 w-16 bg-slate-100 rounded-xl flex items-center justify-center overflow-hidden shrink-0">
                       {prod.imagen_url && prod.imagen_url.startsWith('/uploads') ? (
-                        <img src={`http://localhost:5000${prod.imagen_url}`} alt={prod.nombre} className="w-full h-full object-cover" />
+                        <img src={`https://backend-clearwater.onrender.com/api/${prod.imagen_url}`} alt={prod.nombre} className="w-full h-full object-cover" />
                       ) : (
                         <span className="text-2xl">📦</span>
                       )}

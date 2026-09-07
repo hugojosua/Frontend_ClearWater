@@ -24,19 +24,19 @@ const ReportesAdmin = () => {
       const headers = { Authorization: `Bearer ${token}` };
 
       // 1. Cargar resumen general
-      const resResumen = await axios.get('http://localhost:5000/api/reportes', { headers });
+      const resResumen = await axios.get('https://backend-clearwater.onrender.com/api/reportes', { headers });
       setResumen(resResumen.data);
 
       // 2. Cargar historial detallado de todas las recargas
       try {
-        const resHistorial = await axios.get('http://localhost:5000/api/reportes/historial', { headers });
+        const resHistorial = await axios.get('https://backend-clearwater.onrender.com/api/reportes/historial', { headers });
         setHistorial(resHistorial.data);
       } catch (e) {
         console.warn("Falta crear el endpoint de historial en el backend");
       }
 
       // 3. Cargar lista de clientes para el filtro
-      const resClientes = await axios.get('http://localhost:5000/api/clientes', { headers });
+      const resClientes = await axios.get('https://backend-clearwater.onrender.com/api/clientes', { headers });
       setClientes(resClientes.data);
 
     } catch (err) {

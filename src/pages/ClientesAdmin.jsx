@@ -17,7 +17,7 @@ const ClientesAdmin = () => {
   const cargarClientes = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/clientes', {
+      const response = await axios.get('https://backend-clearwater.onrender.com/api/clientes', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setClientes(response.data);
@@ -31,10 +31,10 @@ const ClientesAdmin = () => {
     try {
       const token = localStorage.getItem('token');
       if (editandoId) {
-        await axios.put(`http://localhost:5000/api/clientes/${editandoId}`, formulario, { headers: { Authorization: `Bearer ${token}` } });
+        await axios.put(`https://backend-clearwater.onrender.com/api/clientes/${editandoId}`, formulario, { headers: { Authorization: `Bearer ${token}` } });
         setMensaje('Cliente actualizado exitosamente');
       } else {
-        await axios.post('http://localhost:5000/api/clientes', formulario, { headers: { Authorization: `Bearer ${token}` } });
+        await axios.post('https://backend-clearwater.onrender.com/api/clientes', formulario, { headers: { Authorization: `Bearer ${token}` } });
         setMensaje('Cliente registrado exitosamente');
       }
       limpiarFormulario();
@@ -49,7 +49,7 @@ const ClientesAdmin = () => {
     if (!window.confirm('¿Estás seguro de eliminar este cliente?')) return;
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:5000/api/clientes/${id}`, { headers: { Authorization: `Bearer ${token}` } });
+      await axios.delete(`https://backend-clearwater.onrender.com/api/clientes/${id}`, { headers: { Authorization: `Bearer ${token}` } });
       setMensaje('Cliente eliminado correctamente');
       cargarClientes();
       setTimeout(() => setMensaje(''), 3000);

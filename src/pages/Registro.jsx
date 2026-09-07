@@ -22,7 +22,7 @@ const Registro = () => {
     try {
       // Por defecto registramos el rol "admin" para que puedas probar todo el sistema, 
       // luego lo cambiaremos para que por defecto sea "cliente".
-      const response = await axios.post('http://localhost:5000/api/auth/registro', {
+      const response = await axios.post('https://backend-clearwater.onrender.com/api/auth/registro', {
         ...formData,
         rol: 'cliente' // Cambiado a "cliente" para el registro de usuarios finales
       });

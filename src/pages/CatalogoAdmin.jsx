@@ -16,7 +16,7 @@ const CatalogoAdmin = () => {
 
   const cargarProductos = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/productos');
+      const res = await axios.get('https://backend-clearwater.onrender.com/api/productos');
       setProductos(res.data);
     } catch (error) {
       console.error('Error cargando catálogo', error);
@@ -41,10 +41,10 @@ const CatalogoAdmin = () => {
       };
 
       if (editandoId) {
-        await axios.put(`http://localhost:5000/api/productos/${editandoId}`, formData, { headers });
+        await axios.put(`https://backend-clearwater.onrender.com/api/productos/${editandoId}`, formData, { headers });
         setMensaje('Producto actualizado exitosamente');
       } else {
-        await axios.post('http://localhost:5000/api/productos', formData, { headers });
+        await axios.post('https://backend-clearwater.onrender.com/api/productos', formData, { headers });
         setMensaje('Nuevo producto agregado al catálogo');
       }
       
@@ -63,7 +63,7 @@ const CatalogoAdmin = () => {
     if (window.confirm('¿Eliminar este producto del catálogo?')) {
       try {
         const token = localStorage.getItem('token');
-        await axios.delete(`http://localhost:5000/api/productos/${id}`, {
+        await axios.delete(`https://backend-clearwater.onrender.com/api/productos/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setMensaje('Producto eliminado');
@@ -138,7 +138,7 @@ const CatalogoAdmin = () => {
           <div key={producto.id} className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow group flex flex-col">
             <div className="h-40 bg-slate-100 flex items-center justify-center overflow-hidden relative">
               {producto.imagen_url && producto.imagen_url.startsWith('/uploads') ? (
-                <img src={`http://localhost:5000${producto.imagen_url}`} alt={producto.nombre} className="w-full h-full object-cover" />
+                <img src={`https://backend-clearwater.onrender.com${producto.imagen_url}`} alt={producto.nombre} className="w-full h-full object-cover" />
               ) : (
                 <span className="text-5xl">📦</span>
               )}

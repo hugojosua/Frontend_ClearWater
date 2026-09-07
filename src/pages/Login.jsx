@@ -12,7 +12,7 @@ const Login = () => {
     e.preventDefault();
     try {
       // Conectamos con el backend
-      const response = await axios.post('http://localhost:5000/api/auth/login', {
+      const response = await axios.post('https://backend-clearwater.onrender.com/api/auth/login', {
         cedula,
         password
       });

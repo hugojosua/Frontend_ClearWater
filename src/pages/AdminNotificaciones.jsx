@@ -19,10 +19,10 @@ const AdminNotificaciones = () => {
       const token = localStorage.getItem('token');
       const headers = { Authorization: `Bearer ${token}` };
 
-      const resClientes = await axios.get('http://localhost:5000/api/clientes', { headers });
+      const resClientes = await axios.get('https://backend-clearwater.onrender.com/api/clientes', { headers });
       setClientes(resClientes.data);
 
-      const resHistorial = await axios.get('http://localhost:5000/api/notificaciones', { headers });
+      const resHistorial = await axios.get('https://backend-clearwater.onrender.com/api/notificaciones', { headers });
       setHistorial(resHistorial.data);
     } catch (error) {
       console.error('Error al cargar datos', error);
@@ -37,7 +37,7 @@ const AdminNotificaciones = () => {
       const token = localStorage.getItem('token');
       const headers = { Authorization: `Bearer ${token}` };
 
-      await axios.post('http://localhost:5000/api/notificaciones', {
+      await axios.post('https://backend-clearwater.onrender.com/api/notificaciones', {
         usuario_id: destinatario === 'todos' ? null : destinatario,
         mensaje
       }, { headers });
